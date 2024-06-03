@@ -26,7 +26,7 @@ warmStrategyCache({
 
 registerRoute(({ request }) => request.mode === 'navigate', pageCache);
 
-// Implemented asset caching for CSS, JS, and Images
+// Implemented asset caching
 registerRoute(
   ({request}) => ['style', 'script', 'image'].includes(request.destination),
   new StaleWhileRevalidate({

@@ -17,9 +17,21 @@ export const putDb = async (content) => {
   const jateDb = await  openDB('jate', 1);
   const tx = jateDb.transaction('jate', 'readwrite');
   const store = tx.objectStore('jate');
-  const request = store.put({ id: 1, value: content});
-  const result = await request;
-  console.log('Data added to Database', result.value);
+  const request = await store.put({ id: 1, value: content});
+  const result = request;
+  if (result !== undefined) {
+    console.log("Data saved to the database, ID:", result);
+
+    // Fetch the newly inserted data to confirm it was saved correctly.
+    const savedData = await store.get(result);
+    console.log("Saved data:", savedData.value);
+    return savedData.value;
+  } else {
+    console.log(
+      "The data returned as result variable!"
+    );
+    return null;
+  }
 };
 
 // Added logic for a method that gets all the content from the database

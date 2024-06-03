@@ -28,6 +28,7 @@ module.exports = () => {
         short_name: 'J.A.T.E',
         description: 'Takes notes with JavaScript syntax highlighting!',
         start_url: '/',
+        publicPath: '/',
         theme_color: '#225ca3',
         background_color: '#225ca3',
         orientation: 'portrait',
